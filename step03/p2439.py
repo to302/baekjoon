@@ -6,5 +6,5 @@
 
 n = int(input())
 for i in range(n):
-    print(" "*(n-i-1), "*"*(i+1), sep="")
-    
+    # print(" "*(n-i-1), "*"*(i+1), sep="")
+    print(("*"*(i+1)).rjust(n))
