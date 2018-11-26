@@ -19,31 +19,30 @@
 # 출력은 표준 출력을 사용한다. 각 테스트 데이터에 대해, 정수 k를 한 줄에 출력한다. 
 # 여기서 k는 <x:y>가 k번째 해를 나타내는 것을 의미한다. 만일 <x:y>에 의해 표현되는 해가 없다면, 즉, <x:y>가 유효하지 않은 표현이면, -1을 출력한다.
 
-# t = 1
-# M, N, x, y = map(int, "13 11 5 6".split())
+"""
+1
+10 12 3 9
+5 3 4 3
+10 12 7 2
+1
+13 11 5 6
+"""
 
 t = int(input())
 for j in range(t):
     M, N, x, y = map(int, input().split())
-
-    mm = 1
-    nn = 1
-    i = 1 
-    while not (M==mm and N==nn):
-        if (mm==x and nn==y):
-            print(i)
+    if (N>M):
+        tmp = M
+        M = N
+        N = tmp
+        tmp = x
+        x = y
+        y = tmp
+    for p in range(int(40000/M)+10):
+        yi = N if (M*p+x)%N == 0 else (M*p+x)%N
+        if yi==y:
+            print(M*p+x)
             break
-
-        if (mm>=M):
-            mm = 1 
-        else:
-            mm += 1
-
-        if (nn>=N):
-            nn = 1
-        else:
-            nn += 1
-        
-        i += 1
     else:
         print(-1)
+        
