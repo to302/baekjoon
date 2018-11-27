@@ -15,10 +15,17 @@ dist = lambda xy1,xy2: (xy1[0]-xy2[0])**2 + (xy1[1]-xy2[1])**2
 
 n = int(input())
 dl = []
-min = None
+min_val = None
 for i in range(n):
-    print(set(input().split()))
-    #dl.append(list(map(int, input().split())))
+    l = list(map(int, input().split()))
+    if not l in dl:
+        dl.append(l)
     
-#print(dl)
-
+        if (min_val == None and len(dl)==2):
+            min_val = dist(dl[0], dl[1])
+        else:
+            for j in range(len(dl)-1):
+                d = dist(dl[j], dl[-1]) 
+                min_val = min(d, min_val)
+                    
+print(min_val)

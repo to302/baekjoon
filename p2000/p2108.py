@@ -19,11 +19,10 @@
 n = int(input())
 nl = []
 for i in range(n):
-    nl.append(input())
-nl = list(map(int, nl))
-nl.sort()
+    nl.append(int(input()))
+
 print(round(sum(nl)/n))
 print(nl[round(n/2)])
 for i in set(nl):
-    pass
+    print(i, nl.count(i))
 print(nl[n-1] - nl[0])
