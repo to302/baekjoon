@@ -22,27 +22,29 @@
 """
 1
 10 12 3 9
-5 3 4 3
 10 12 7 2
-1
 13 11 5 6
 """
+import sys
+input = sys.stdin.readline
 
 t = int(input())
+cnt = 0
 for j in range(t):
     M, N, x, y = map(int, input().split())
-    if (N>M):
-        tmp = M
-        M = N
-        N = tmp
-        tmp = x
-        x = y
-        y = tmp
-    for p in range(int(40000/M)+10):
-        yi = N if (M*p+x)%N == 0 else (M*p+x)%N
-        if yi==y:
-            print(M*p+x)
-            break
+    if x==y:
+        print(x)
     else:
-        print(-1)
+        i=0
+        while(i<=M*N):
+           i += 1
+           xi = i*M + x
+           yg = xi % N
+           if (yg == y):
+               print(xi)
+               break
+        else:
+            print(-1)
+           
+    
         

@@ -16,9 +16,9 @@ apt = [[i for i in range(1,14+1)]]
 apt.extend([[0]*14]*14)
 for k in range(1,14+1):
     for n in range(0,14):
-        #print(k, n)
         apt[k][n] = sum(apt[k-1][0:n])
         print(k,n,apt[k-1][n],sum(apt[k-1][0:n]))
 
 
-
+for i in range(10):
+    for j in range(0)

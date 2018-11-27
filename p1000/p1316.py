@@ -18,11 +18,11 @@ for i in range(n):
     for a in range(26):
         c = chr(a + ord('a'))
         if s.count(c) != 0:
-            idx = s.find(c) + s.count(c) - 1
-            if (c != s[idx]):
+            eidx = s.find(c) + s.count(c)
+            if (len(set(s[s.find(c):eidx]))) > 1:
                 break
     else:
         cnt += 1
-print(cnt)    
+print(cnt)
 
 
