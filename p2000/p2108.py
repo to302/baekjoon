@@ -24,6 +24,6 @@ nl = list(map(int, nl))
 nl.sort()
 print(round(sum(nl)/n))
 print(nl[round(n/2)])
-for in set(nl):
+for i in set(nl):
     pass
 print(nl[n-1] - nl[0])
