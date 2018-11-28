@@ -10,9 +10,16 @@
 # 출력
 # 조건에 따라 정렬하여 단어들을 출력한다. 단, 같은 단어가 여러 번 입력된 경우에는 한 번씩만 출력한다.
 
-n = int(input())
-sl = []
-si = []
-for i in range(n):
-    sl.append(input())
+import sys
 
+n = int(sys.stdin.readline())
+nl = [[] for _ in range(50)]
+for _ in range(n):
+    s = str(sys.stdin.readline().rstrip())
+    if (s not in nl[len(s)-1]):
+        nl[len(s)-1].append(s)
+
+for li in nl:
+    if (len(li)>0):
+        li.sort()
+        print("\n".join(li))
