@@ -18,11 +18,29 @@
 
 n = int(input())
 nl = []
-for i in range(n):
-    nl.append(int(input()))
+nvl = [0]*n
+t = 0
+for _ in range(n):
+    i = int(input())
+    t += i
+    nl.append(i)
 
-print(round(sum(nl)/n))
+nl.sort()
+print(round(t/n))
 print(nl[round(n/2)])
-for i in set(nl):
-    print(i, nl.count(i))
+
+dic = {k:nl.count(k) for k in set(nl)}
+dl = list(dic.values())
+max_v = max(dl)
+mv_cnt = dl.count(max_v)
+mvl = []
+for k, v in dic.items():
+    if (v == max_v):
+        mvl.append(k)
+if (len(mvl) == 1):
+    print(mvl[0])
+else:
+    mvl.sort()
+    print(mvl[1])
+
 print(nl[n-1] - nl[0])
