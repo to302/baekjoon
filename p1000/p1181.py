@@ -13,13 +13,10 @@
 import sys
 
 n = int(sys.stdin.readline())
-nl = [[] for _ in range(50)]
+nl = []
 for _ in range(n):
-    s = str(sys.stdin.readline().rstrip())
-    if (s not in nl[len(s)-1]):
-        nl[len(s)-1].append(s)
-
-for li in nl:
-    if (len(li)>0):
-        li.sort()
-        print("\n".join(li))
+    s = sys.stdin.readline().rstrip()
+    nl.append(s)
+nl = sorted(list(set(nl)))
+nl.sort(key=len)
+print(nl)
