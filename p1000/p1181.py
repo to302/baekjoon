@@ -19,4 +19,4 @@ for _ in range(n):
     nl.append(s)
 nl = sorted(list(set(nl)))
 nl.sort(key=len)
-print(nl)
+print("\n".join(nl))
