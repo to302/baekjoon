@@ -9,6 +9,30 @@
 # 임의의 수열이 주어졌을 때 스택을 이용해 그 수열을 만들 수 있는지 없는지, 
 # 있다면 어떤 순서로 push와 pop 연산을 수행해야 하는지를 알아낼 수 있다. 이를 계산하는 프로그램을 작성하라.
 # 입력
-# 첫 줄에 n (1 ≤ n ≤ 100,000)이 주어진다. 둘째 줄부터 n개의 줄에는 수열을 이루는 1이상 n이하의 정수가 하나씩 순서대로 주어진다. 물론 같은 정수가 두 번 나오는 일은 없다.
+# 첫 줄에 n (1 ≤ n ≤ 100,000)이 주어진다. 둘째 줄부터 n개의 줄에는 수열을 이루는 1이상 n이하의 정수가 하나씩 순서대로 주어진다. 
+# 물론 같은 정수가 두 번 나오는 일은 없다.
 # 출력
 # 입력된 수열을 만들기 위해 필요한 연산을 한 줄에 한 개씩 출력한다. push연산은 +로, pop 연산은 -로 표현하도록 한다. 불가능한 경우 NO를 출력한다.
+
+from sys import stdin
+
+n = int(stdin.readline())
+nl = []
+for _ in range(n):
+    nl.append(int(stdin.readline()))
+
+stack = []
+empty = lambda : True if len(stack)<1 else False
+ml = []
+for i in range(1,n+1):
+    ml.append("+")
+    stack.append(i)
+    while(not empty() and stack[-1] == nl[0]):
+        ml.append("-")
+        del(nl[0])
+        stack.pop()
+
+if not empty():
+    print("NO")
+else:
+    print("\n".join(ml))
