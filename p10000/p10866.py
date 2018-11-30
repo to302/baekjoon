@@ -33,6 +33,3 @@ n = int(stdin.readline())
 for _ in range(n):
     s = *stdin.readline().rstrip().split(), None
     eval(s[0])(s[1]) if s[1] is not None else print(eval(s[0])())
-
-# list 상속받은 클래스가 더 빠른듯..
-# https://www.acmicpc.net/source/10913938
