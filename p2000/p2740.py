@@ -9,22 +9,34 @@
 # 출력
 # 첫째 줄부터 N개의 줄에 행렬 A와 B를 곱한 행렬을 출력한다. 행렬의 각 원소는 공백으로 구분한다.
 
-import sys
-input = sys.stdin.readline
+# import numpy as np
 
-n, m = map(int, input().split())
-a = [[]*m]*n
-for i in range(n):
-    a[i]=list(map(int, input().split()))
+from sys import stdin
 
+ml = []
+for _ in range(2):
+    r, c = map(int, stdin.readline().rstrip().split())
+    _m1 = []
+    for i in range(r):
+        _m1.append(list(map(int, stdin.readline().rstrip().split())))
+    ml.append(_m1)
 
-m, k = map(int, input().split())
-b = [[]*k]*m
-for i in range(m):
-    b[i]=list(map(int, input().split()))
+n = len(ml[0])
+m = len(ml[0][0])
+k = len(ml[1][0])
 
- 
-for i in range(n):
-    for j in range(m):
-        for h in range(k):
-            print(i, j, k, a[i][j] * b[j][h])
+r = [[None]*k for _ in range(n)]
+
+for _n in range(n):
+    for _k in range(k):
+        _tt = 0
+        for _m in range(m):
+            _tt += ml[0][_n][_m] * ml[1][_m][_k]
+        r[_n][_k] = _tt
+
+for i in r:
+    for j in i:
+        print(j, end=" ")
+    print("")
+
+# print(np.array(ml[0]).dot(np.array(ml[1])))
