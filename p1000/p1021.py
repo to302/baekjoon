@@ -14,56 +14,34 @@
 # 출력
 # 첫째 줄에 문제의 정답을 출력한다.
 
-class CircularQueue(list):
+import sys
+
+N, M = map(int, sys.stdin.readline().split())
+que = [i for i in range(1,N+1)]
+
+head = 0
+shift_cnt = 0
+for i in map(int, sys.stdin.readline().split()):
+    print('head', head, que)
+    if (que[head] == i):
+        que.pop(head)
+    else:
+        idx = que.index(i)
+        dist = abs(head - idx)
+        if (len(que) - dist < dist):
+            dist = len(que) - dist
+        shift_cnt += dist
+        head = idx
+        que.pop(head)
+        
+    if (len(que) <= head):
+        head = 0
     
-    def __init__(self, user_list):
-        self._idx = 0
-        self._move_cnt = 0
-        self.extend(user_list) 
-    
-    def move_count(self):
-        return self._move_cnt
+print(shift_cnt)
 
-    def left(self, m=1):
-        self._idx = (self._idx + m) % len(self)
-        self._move_cnt += m
-    
-    def right(self, m=1):
-        self._idx = (self._idx - m + len(self)) % len(self)
-        self._move_cnt += m
+'''
+10 10
+1 9 10 8 2 6 7 5 4 3
+'''
 
-    def distance(self, v):
-        diff = abs(self._idx - self.index(v))
-        return min(diff, len(self) - diff)
-
-    def get(self, v):
-        v_idx = self.index(v)
-        md = self.distance(v)
-        if (self._idx < v_idx and v_idx-self._idx == md):
-            self.left(md)
-        else:
-            self.right(md)
-
-        if (self._idx >= len(self)-1):
-            self._idx = 0
-        self.pop(self._idx)
-
-
-# m, n = map(int, input().split())
-m, n = 50, 11 
-cq = CircularQueue([i for i in range(1,m+1)])
-
-# for i in map(int, input().split()):
-for i in map(int, "45 2 23 6 7 40 10 30 12 14 49".split()):
-    print(cq.distance(i), end="/")
-    cq.get(i)
-    print(i, cq)
-
-
-print(cq.move_count())
-
-
-
-
-
-
+#pass
