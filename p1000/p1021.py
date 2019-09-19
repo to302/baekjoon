@@ -28,9 +28,7 @@ for i in map(int, sys.stdin.readline().split()):
     else:
         idx = que.index(i)
         dist = abs(head - idx)
-        if (len(que) - dist < dist):
-            dist = len(que) - dist
-        shift_cnt += dist
+        shift_cnt += min(len(que)-dist, dist)
         head = idx
         que.pop(head)
         
