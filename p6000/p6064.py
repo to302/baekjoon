@@ -24,24 +24,59 @@
 # 출력은 표준 출력을 사용한다. 각 테스트 데이터에 대해, 정수 k를 한 줄에 출력한다. 
 # 여기서 k는 <x:y>가 k번째 해를 나타내는 것을 의미한다. 만일 <x:y>에 의해 표현되는 해가 없다면, 즉, <x:y>가 유효하지 않은 표현이면, -1을 출력한다.
 
-"""
-최소공배수 문제인듯..
-
-1
-10 12 3 9
-10 12 7 2
-13 11 5 6
-"""
-
 import sys
 import math
 
 for _ in range(int(input())):
     M, N, x, y = map(int, sys.stdin.readline().split())
-    lcm = (M*N) / math.gcd(M, N) # 최소공배수 
+    lcm = (M*N) / math.gcd(M, N) # 최소공배수
     
     for i in range(int(lcm/M)):
-        print(i)
-    
+        t = (M*i)+x
+        py = (N if t%N==0 else t%N)
+        
+        if (py == y):
+            print(t)
+            break
+    else:
+        print(-1)
+
+# pass (2019-10-15) (좀)
+
+## Check logic #######################################
+# sets= []
+# T = int(input())
+# for i in range(T):
+#   M, N, x, y = map(int, input().split())
+#   sets.append([M,N,x,y])
+
+# for i in range(T):
+#   M = sets[i][0]
+#   N = sets[i][1]
+#   x = sets[i][2]
+#   y = sets[i][3]
+#   cm = M * N
+#   ans = list(set(range(x,cm+M,M)) & set(range(y,cm+N,N)))
+#   if len(ans) == 0 or min(ans) < 1: print(-1)
+#   else: print(min(ans))
+
+"""
+최소공배수 문제인듯..
+
+3
+10 12 1 1
+10 12 1 11
+10 12 3 1
+
+1
+11
+13
+60
+-----------
+1
+34 24 12 6
+
+318
+"""    
    
         
