@@ -15,15 +15,11 @@
 s1 = input()
 s2 = input()
 
-s1s = set(s1)
-s2s = set(s2)
-tc = 0
-for c in (s1s - s2s):
-    tc += s1.count(c)
-    print(c, s1.count(c))
+wc = 0
+for c in set(s1+s2):
+    if (c in s1) and (c in s2):
+        wc += min(s1.count(c), s2.count(c))
+    
+print(len(s1+s2) - wc*2)
 
-for c in (s2s - s1s):
-    tc += s2.count(c)
-    print(c, s2.count(c))
-
-print(tc) # 오답
+# pass (2019-10-15)
