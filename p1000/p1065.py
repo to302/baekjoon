@@ -11,16 +11,30 @@
 
 # 문제 이해 관련 참고 : https://www.acmicpc.net/board/view/25689
 
-import time
-bt = time.time()
-######################
-
 import sys
-n = int(sys.stdin.readline().rstrip())
+input = sys.stdin.readline
+
+N = int(input())
+
+def is_hansu(i):
+    st = set()
+    s = str(i)
+    for i in range(1, len(s)):
+        dif = int(s[i]) - int(s[i-1])
+        st.add(dif)
+        if (len(st) > 1):
+            return False
+            
+    return True
 
 
-        
-######################
-et = time.time()
+if N < 100:
+    print(N)
+else:
+    cnt = 99
+    for i in range(100, N+1):
+        if is_hansu(i):
+            cnt += 1
+    print(cnt)
 
-print(et-bt)
+# pass
