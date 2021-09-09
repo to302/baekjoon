@@ -15,7 +15,7 @@ sieve[0:1] = False, False
 
 for i in range(2, int(N**0.5)+1):
     if sieve[i]:
-        for j in range(i*i, N+1, i):
+        for j in range(i+i, N+1, i):
             sieve[j] = False
 
 for i in range(M, N+1):
