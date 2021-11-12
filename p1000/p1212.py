@@ -24,6 +24,7 @@ while ans[0] == '0' and len(ans)>1:
 
 print(ans)
 
+# pass 
 
 # 수학
 # 구현
