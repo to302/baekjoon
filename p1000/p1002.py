@@ -52,4 +52,4 @@ for _ in range(T):
             else:
                 print(2)
         
-    
+#pass    
