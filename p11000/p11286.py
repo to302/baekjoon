@@ -37,7 +37,7 @@ for _ in range(int(input())):
 
 
     
-# fail 
+# pass
 
 # 자료 구조
 # 우선순위 큐
