@@ -4,40 +4,25 @@
 https://www.acmicpc.net/problem/9095
 
 n을 1, 2, 3의 합으로 나타내는 방법의 수를 출력
+
+첫째 줄에 테스트 케이스의 개수 T가 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있고, 정수 n이 주어진다. n은 양수이며 11보다 작다.
+출력
+각 테스트 케이스마다, n을 1, 2, 3의 합으로 나타내는 방법의 수를 출력한다.
 '''
 
-d = {1:{(1,)}}
+import sys 
+input = sys.stdin.readline
 
-def solve(n):
-    if n in d.keys():
-        return(d[n])
-
-    s = set()
-    for i in range(1, n):
-        if n-i<=3 and i<=3:
-            s.add((n-i, i))
-
-        if n-i > 1:
-            ts = solve(n-i)
-            for t in ts:
-                if i<=3:
-                    s.add((t +(i,)))
-        elif i > 1:
-            ts = solve(i)
-            for t in ts:
-                if n-i<=3:
-                    s.add(((n-i,)+t))
-            
-    d[n] = s
-    return(s)
-
-
-for _ in range(int(input())):
+T = int(input())
+for _ in range(T):
     n = int(input())
-    print(len(solve(n)))
+    a = [0, 1, 2, 4] + [0] * (n-3)
+    for i in range(4, n+1):
+        a[i] = a[i-1] + a[i-2] + a[i-3]
+    
+    print(a[n])
 
-
-# fail
+# pass
 
 
 # 다이나믹 프로그래밍
