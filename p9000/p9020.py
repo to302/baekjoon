@@ -35,7 +35,13 @@ for _ in range(int(input())):
     for i in range(int(n/2), n+1):
         if sieve[i] and sieve[n-i]:
             si = i
-            break
+            break # 이걸 넣어야 빨라짐
     print(n-si, si)
 
-#pass
+#pass - 제출답 중 느린 소스 확인 
+
+
+# 수학
+# 정수론
+# 소수 판정
+# 에라토스테네스의 체
