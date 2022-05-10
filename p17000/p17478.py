@@ -27,7 +27,8 @@ def chatbot(rn: int, n: int = 0):
         
     return s
 
-
-
+N = int(input())
 print('어느 한 컴퓨터공학과 학생이 유명한 교수님을 찾아가 물었다.')
-print(chatbot(4))
+print(chatbot(N))
+
+# pass
