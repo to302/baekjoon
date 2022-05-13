@@ -1,25 +1,47 @@
 # coding=utf-8
 
 '''오큰수
-스택으로 풀 수 있는 꽤 어려운 문제
 https://www.acmicpc.net/problem/17298
 
-크기가 N인 수열 A = A1, A2, ..., AN이 있다. 수열의 각 원소 Ai에 대해서 오큰수 NGE(i)를 구하려고 한다. 
-Ai의 오큰수는 오른쪽에 있으면서 Ai보다 큰 수 중에서 가장 왼쪽에 있는 수를 의미한다. 그러한 수가 없는 경우에 오큰수는 -1이다.
-예를 들어, 
-A = [3, 5, 2, 7]인 경우 NGE(1) = 5, NGE(2) = 7, NGE(3) = 7, NGE(4) = -1이다. 
-A = [9, 5, 4, 8]인 경우에는 NGE(1) = -1, NGE(2) = 8, NGE(3) = 8, NGE(4) = -1이다.
-
-첫째 줄에 수열 A의 크기 N (1 ≤ N ≤ 1,000,000)이 주어진다. 둘째 줄에 수열 A의 원소 A1, A2, ..., AN (1 ≤ Ai ≤ 1,000,000)이 주어진다.
-총 N개의 수 NGE(1), NGE(2), ..., NGE(N)을 공백으로 구분해 출력한다.
+골드4
 '''
 
+from collections import deque
+
 N = int(input())
-A = list(map(int, input().split()))
+q = list(map(int, input().split()))
+result = [-1] * N
 
+stack = deque()
 
-
+for i in range(N-1, -1, -1):
+    while len(stack)>0:
+        if stack[-1] > q[i]:
+            result[i] = stack[-1]
+            stack.append(q[i])
+            break
+        else:
+            stack.pop()
+    else:
+        stack.append(q[i])
         
+# print(' '.join(map(str, result)))
+print(*result)
+
+
+# pass
+
+# 자료구조
+# 스택
+
+
+'''
+질문자님의 코드를 보면 왼쪽부터 원소를 하나씩 꺼내면서 남은 원소를 모두 확인하는 O(n^2)로 동작하게 됩니다. (입력이 내림차순으로 정렬된 경우를 생각해보세요)
+하지만 오른쪽원소부터 확인하며 스택을 이용하는 경우를 보면 시간복잡도가 O(n) 입니다.
+https://www.acmicpc.net/board/view/74909
+의 답변이 참고가 될 것 같습니다.
+'''
+
                 
 
 
